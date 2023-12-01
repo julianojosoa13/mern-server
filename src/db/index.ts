@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
+import { MONGO_URI } from "../utils/variables";
 
-const URI = process.env.MONGO_URI as string
-
-const db = mongoose.connect(URI).then(() => {
+const db = mongoose.connect(MONGO_URI).then(() => {
     console.log("db is connected")
 }).catch((err) =>{
     console.error('db connection failed ' + err)
