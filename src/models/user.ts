@@ -12,7 +12,7 @@ interface UserDocument {
     followings: ObjectId[];
 }
 
-const userScema =  new Schema<UserDocument>({
+const userSchema =  new Schema<UserDocument>({
     name: {
         type: String,
         required: true,
@@ -52,4 +52,4 @@ const userScema =  new Schema<UserDocument>({
     tokens: [String]
 }, {timestamps: true})
 
-export default model("User", userScema) as Model<UserDocument>
+export default model("User", userSchema) as Model<UserDocument>
