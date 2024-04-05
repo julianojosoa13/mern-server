@@ -33,7 +33,7 @@ export const create: RequestHandler = async (req: CreateUser, res) => {
 
         transport.sendMail({
             to: user.email,
-            from: 'auth@myapp.com',
+            from: 'josoajuliano@gmail.com',
             html: `<h1>Your verification token is ${token}</h1>`
         })
 
