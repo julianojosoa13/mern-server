@@ -12,9 +12,9 @@ export const create: RequestHandler = async (req: CreateUser, res) => {
         await user.save()
 
         const token = generateToken()
-        const sendToken = await sendVerificationMail(token, {name, email, userId: user._id})
+        sendVerificationMail(token, {name, email, userId: user._id.toString()})
         
-        res.status(201).json({user})
+        res.status(201).json({user: {id: user._id, name, email}})
     } catch(err) {
         console.error(err)
         res.json({error: err})

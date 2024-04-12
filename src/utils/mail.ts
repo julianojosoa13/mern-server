@@ -17,12 +17,11 @@ interface Profile {
 
 const generateEmailTransporter = () => {
     return nodemailer.createTransport({
-        host: RESEND_SMTP_HOST,
-        port: RESEND_SMTP_PORT,
-        secure: true,
+        host: MAILTRAP_SMTP_HOST,
+        port: MAILTRAP_SMTP_PORT,
         auth: {
-          user: RESEND_SMTP_USER,
-          pass: RESEND_API_KEY,
+          user: MAILTRAP_USER,
+          pass: MAILTRAP_PASSWORD,
         }
       });
 }
