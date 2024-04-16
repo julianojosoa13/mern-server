@@ -1,5 +1,7 @@
 import * as yup from 'yup'
 
+import { isValidObjectId } from 'mongoose'
+
 export const CreateUserSchema = yup.object().shape({
     name: yup
             .string()
@@ -17,4 +19,20 @@ export const CreateUserSchema = yup.object().shape({
             .required("Password is missing")
             .min(8, "Password is too short! Minimum is 8 characters")
             .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/, "Password is too simple! You can use uppercase, lowercase, special character, and numbers to make it more complex")
+})
+
+export const EmailVerificationBody = yup.object().shape({
+        token: yup
+                .string()
+                .trim()
+                .required("Invalid token"),
+        userId: yup
+                .string()
+                .transform(function (value) {
+                        if(this.isType(value) && isValidObjectId(value) ) {
+                                return value
+                        }
+                        return "" 
+                })
+                .required("Invalid userId")
 })
