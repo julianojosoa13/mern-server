@@ -1,28 +1,33 @@
 import { Request } from "express";
 
-export interface CreateUser extends Request {
-    body: {
+declare global {
+  namespace Express {
+    interface Request {
+      user: {
+        id: any;
         name: string;
         email: string;
-        password: string;
+        verified: boolean;
+        avatar?: string;
+        followers: number;
+        followings: number;
+      };
+      token: string;
     }
+  }
+}
+
+export interface CreateUser extends Request {
+  body: {
+    name: string;
+    email: string;
+    password: string;
+  };
 }
 
 export interface VerifyEmailRequest extends Request {
-    body: {
-        token: string;
-        userId: string;
-    }
-}
-
-export interface ReVerifyEmailRequest extends Request {
-    body: {
-        userId: string;
-    }
-}
-
-export interface ForgetPasswordRequest extends Request {
-    body: {
-        email: string;
-    }
+  body: {
+    userId: string;
+    token: string;
+  };
 }
