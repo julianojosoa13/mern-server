@@ -31,3 +31,15 @@ export interface VerifyEmailRequest extends Request {
     token: string;
   };
 }
+
+export interface ReVerifyEmailRequest extends Request {
+  body: {
+      userId: string;
+  }
+}
+
+export interface ForgetPasswordRequest extends Request {
+  body: {
+      email: string;
+  }
+}
