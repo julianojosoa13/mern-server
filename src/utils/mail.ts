@@ -5,17 +5,18 @@ import User from "#/models/user";
 import EmailVerificationToken from "#/models/emailVerificationToken";
 import {
   MAILTRAP_PASS,
+  MAILTRAP_SMTP_HOST,
+  MAILTRAP_SMTP_PORT,
   MAILTRAP_USER,
   SIGN_IN_URL,
   VERIFICATION_EMAIL,
 } from "#/utils/variables";
-import { generateToken } from "#/utils/helper";
 import { generateTemplate } from "#/mail/template";
 
 const generateMailTransporter = () => {
   const transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
+    host: MAILTRAP_SMTP_HOST,
+    port: MAILTRAP_SMTP_PORT,
     auth: {
       user: MAILTRAP_USER,
       pass: MAILTRAP_PASS,
