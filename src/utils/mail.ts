@@ -1,10 +1,8 @@
 import nodemailer from "nodemailer";
 import path from "path";
 
-import User from "#/models/user";
-import EmailVerificationToken from "#/models/emailVerificationToken";
 import {
-  MAILTRAP_PASS,
+  MAILTRAP_PASSWORD,
   MAILTRAP_SMTP_HOST,
   MAILTRAP_SMTP_PORT,
   MAILTRAP_USER,
@@ -19,7 +17,7 @@ const generateMailTransporter = () => {
     port: MAILTRAP_SMTP_PORT,
     auth: {
       user: MAILTRAP_USER,
-      pass: MAILTRAP_PASS,
+      pass: MAILTRAP_PASSWORD,
     },
   });
 
@@ -42,7 +40,7 @@ export const sendVerificationMail = async (token: string, profile: Profile) => {
   transport.sendMail({
     to: email,
     from: VERIFICATION_EMAIL,
-    subject: "Welcome message",
+    subject: "Verify your account",
     html: generateTemplate({
       title: "Welcome to Podify",
       message: welcomeMessage,

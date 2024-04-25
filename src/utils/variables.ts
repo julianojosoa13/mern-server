@@ -3,7 +3,7 @@ const { env } = process as { env: { [key: string]: string } };
 export const {
   MONGO_URI,
   MAILTRAP_USER,
-  MAILTRAP_PASS,
+  MAILTRAP_PASSWORD,
   MAILTRAP_SMTP_HOST,
   MAILTRAP_SMTP_PORT,
   VERIFICATION_EMAIL,
@@ -14,3 +14,18 @@ export const {
   CLOUD_KEY,
   CLOUD_SECRET,
 } = env;
+
+console.log({
+  MONGO_URI,
+  MAILTRAP_USER,
+  MAILTRAP_PASSWORD,
+  MAILTRAP_SMTP_HOST,
+  MAILTRAP_SMTP_PORT,
+  VERIFICATION_EMAIL,
+  PASSWORD_RESET_LINK,
+  SIGN_IN_URL,
+  JWT_SECRET,
+  CLOUD_NAME,
+  CLOUD_KEY,
+  CLOUD_SECRET,
+});
